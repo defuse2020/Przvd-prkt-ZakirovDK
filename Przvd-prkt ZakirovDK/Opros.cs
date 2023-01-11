@@ -30,7 +30,8 @@ namespace Przvd_prkt_ZakirovDK
         private void metroButton1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            cmd = new MySqlCommand("INSERT INTO t_Proizvod_ZAKIROV (male, age, marital_status, birthplace, citizenship, nationality, education, occupation)  VALUES (@male, @age, @marital_status, @birthplace, @citizenship, @nationality, @education, @occupation)", conn);
+            cmd = new MySqlCommand("INSERT INTO t_Proizvod_ZAKIROV (male, age, marital_status, birthplace, citizenship, nationality, education, occupation)  " +
+                "VALUES (@male, @age, @marital_status, @birthplace, @citizenship, @nationality, @education, @occupation)", conn);
             cmd.Parameters.AddWithValue("@male", metroTextBox1.Text);
             cmd.Parameters.AddWithValue("@age", metroTextBox2.Text);
             cmd.Parameters.AddWithValue("@marital_status", metroTextBox3.Text);
@@ -39,14 +40,6 @@ namespace Przvd_prkt_ZakirovDK
             cmd.Parameters.AddWithValue("@nationality", metroTextBox6.Text);
             cmd.Parameters.AddWithValue("@education", metroTextBox7.Text);
             cmd.Parameters.AddWithValue("@occupation", metroTextBox8.Text);
-            try
-            { 
-                cmd.ExecuteNonQuery(); 
-            }
-            catch (Exception ex)
-            { 
-                MessageBox.Show(ex.Message); 
-            }
             conn.Close();
             this.Close();
         }
